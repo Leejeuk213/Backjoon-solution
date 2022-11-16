@@ -42,10 +42,6 @@ int main()
             {
                 dp[j+time[j]]=big+pay[j];
             }
-            if(dp[j+time[j]]<dp[i]+pay[j])
-            {
-                dp[j+time[j]]=dp[i]+pay[j];
-            }
             j++;
         }
     }
