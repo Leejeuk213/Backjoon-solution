@@ -4,17 +4,15 @@
 #include<map>
 #include<algorithm>
 using namespace std;
-
 vector<int>v;
 int n,m;
 map<int,string> z;
 int main()
 {
+    cin >>n >>m;
     ios_base :: sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    cin >>n >>m;
-
     for(int i=0;i<n;i++)
     {
         string a;
@@ -27,13 +25,31 @@ int main()
         v.push_back(b);
         z[b]=a;
     }
-    sort(v.begin(),v.end());
+
     while(m--)
     {
         int num;
         cin >>num;
-        int result=lower_bound(v.begin(),v.end(),num)-v.begin();
-        
+
+        int left=0;
+        int right=v.size()-1;
+        int mid=(left+right)/2;
+        int result;
+        while(left<=right)
+        {
+            mid=(left+right)/2;
+            if(v[mid]<num)
+            {
+                //cout<<"small"<<z[v[mid]]<<"\n";
+                left=mid+1;
+            }
+            else
+            {
+                //cout<<"big"<<z[v[mid]]<<"\n";
+                result=mid;
+                right=mid-1;
+            }
+        }
         cout<<z[v[result]]<<"\n";
     }
 
