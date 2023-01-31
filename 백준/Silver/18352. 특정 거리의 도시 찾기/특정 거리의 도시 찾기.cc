@@ -18,8 +18,12 @@ void bfs(int start)
     {
         int current=q.front().first;
         int cnt=q.front().second;
-        if(cnt==k)ans.push_back(current);
         q.pop();
+        if(cnt==k)
+        {
+            ans.push_back(current);
+            continue;
+        }
         for(int i=0;i<v[current].size();i++)
         {
             int next=v[current][i];
